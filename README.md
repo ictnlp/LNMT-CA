@@ -51,6 +51,7 @@ cd raw_images
 ```
 
 3. Extract the image feature
+
 Return to the "LNMT-CA/"
 
 ```shell
