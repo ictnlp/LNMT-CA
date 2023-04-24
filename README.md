@@ -153,13 +153,15 @@ fairseq-train data-bin/multilingual-60k --task translation  --source-lang mul --
 1. Run the following script to average the last 5 checkpoints and evaluate on the three Multi30K test sets, since there are three source languages, [DE] test sets is test, test3, test5; [FR] test sets is test1, test4, test6, [CS] test sets is test2:
 
 ```shell
+mkdir -p results
+
 $MODEL=multilingual-60k
 $DATASET=multilingual-60k
 
 sh test_avg.sh $MODEL $DATASET 5
 ```
 
-The result will be stored at "LNMT-CA/result/"
+The result will be stored at "LNMT-CA/results/"
 
 
 ## Citation
