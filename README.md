@@ -18,7 +18,6 @@ cd LNMT-CA/
 pip install --editable ./
 python3 setup.py install --user
 python3 setup.py build_ext --inplace
-pip install inflect sentencepiece soundfile textgrid pandas
 ```
 
 ### Data Preparation
