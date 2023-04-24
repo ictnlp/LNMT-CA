@@ -39,11 +39,11 @@ def main():
             out, out1 = model.encode_image(img)
             results.append(out.squeeze(0).cpu().numpy().tolist())
             out1 = out1.cpu().numpy()
-            np.save(f"../img/{args.lang}/{args.lang}_vit_clip_{idx}",out1)
+            np.save(f"../data/img/{args.lang}/{args.lang}_vit_clip_{idx}",out1)
 
     tmp_np_results = np.array(results)
     print(tmp_np_results.shape)
-    np.save(f"../img/{args.lang}/{args.lang}_vit_clip_avg", tmp_np_results)
+    np.save(f"../data/img/{args.lang}/{args.lang}_vit_clip_avg", tmp_np_results)
     
 if __name__ == '__main__':
     main()

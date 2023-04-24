@@ -66,9 +66,9 @@ class LabelSmoothedCrossEntropyCriterionContrastive(FairseqCriterion):
         self.sen_tem = sen_tem
         self.token_tem = token_tem
 
-        self.de_image_matrix = torch.tensor(np.load(f"{self.root}/de_vit_clip_avg.npy")).float()
-        self.fr_image_matrix = torch.tensor(np.load(f"{self.root}/fr_vit_clip_avg.npy")).float()
-        self.cs_image_matrix = torch.tensor(np.load(f"{self.root}/cs_vit_clip_avg.npy")).float()
+        self.de_image_matrix = torch.tensor(np.load(f"{self.root}/de/de_vit_clip_avg.npy")).float()
+        self.fr_image_matrix = torch.tensor(np.load(f"{self.root}/fr/fr_vit_clip_avg.npy")).float()
+        self.cs_image_matrix = torch.tensor(np.load(f"{self.root}/cs/cs_vit_clip_avg.npy")).float()
 
     @staticmethod
     def add_args(parser):
