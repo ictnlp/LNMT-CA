@@ -29,7 +29,7 @@ SRC1=de
 SRC2=fr
 SRC3=cs
 
-IMG_ROOT = data/img/
+IMG_ROOT=data/img/
 cd $IMG_ROOT
 
 mkdir -p raw_images
@@ -44,17 +44,20 @@ The Multi30K images can be downloaded [here](https://forms.illinois.edu/sec/2296
 
 ```shell
 
-cd $IMG_ROOT/raw_images
+cd raw_images
 
 # Download the image data here
 
 ```
 
 3. Extract the image feature
+Return to the "LNMT-CA/"
 
 ```shell
 cd CLIP
-python extract_features.py
+python extract_vit.py --lang $SRC1 --device cuda:0
+python extract_vit.py --lang $SRC2 --device cuda:0
+python extract_vit.py --lang $SRC3 --device cuda:0
 ```
 
 4. Finally, the directory "data" should look like this:
@@ -88,8 +91,8 @@ python extract_features.py
 2. Use `fairseq-preprocess` command to convert the BPE texts into fairseq formats.
 
 ```shell
-TEXT=data/text/bpe/mul-en
-fairseq-preprocess --source-lang mul --target-lang en --trainpref ${TEXT}/train --validpref ${TEXT}/val  --testpref ${TEXT}/test_2016,${TEXT}/test_2017,${TEXT}/test_mscoco --destdir data-bin/multilingual-60k  --joined-dictionary --workers=20 
+TEXT=data/text/bpe/en-mul
+fairseq-preprocess --source-lang mul --target-lang en --trainpref ${TEXT}/train --validpref ${TEXT}/val  --testpref ${TEXT}/test_2016.de-en,${TEXT}/test_2016.fr-en,${TEXT}/test_2016.cs-en,${TEXT}/test_2017.de-en,${TEXT}/test_2017.fr-en,${TEXT}/test_mscoco.de-en,${TEXT}/test_mscoco.fr-en --destdir data-bin/multilingual-60k  --joined-dictionary --workers=20 
 ```
 
 
@@ -147,15 +150,13 @@ fairseq-train data-bin/multilingual-60k --task translation  --source-lang mul --
 
 ### Evaluate
 
-1. Run the following script to average the last 5 checkpoints and evaluate on the three Multi30K test sets:
+1. Run the following script to average the last 5 checkpoints and evaluate on the three Multi30K test sets, since there are three source languages, [DE] test sets is test, test3, test5; [FR] test sets is test1, test4, test6, [CS] test sets is test2:
 
 ```shell
 $MODEL=multilingual-60k
 $DATASET=multilingual-60k
 
-sh test_avg.sh $MODEL test $DATASET 5
-sh test_avg.sh $MODEL test1 $DATASET 5
-sh test_avg.sh $MODEL test2 $DATASET 5
+sh test_avg.sh $MODEL $DATASET 5
 ```
 
 The result will be stored at "LNMT-CA/result/"
