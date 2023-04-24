@@ -29,12 +29,9 @@ SRC1=de
 SRC2=fr
 SRC3=cs
 
-TEXT_ROOT=data/text/
-IMG_ROOT=data/img
-mkdir -p $TEXT_ROOT $IMG_ROOT
-
 cd $IMG_ROOT
 mkdir -p raw_images
+mkdir $SRC1 $SRC2 $SRC3
 ```
 
 2. Download the dataset
@@ -46,6 +43,7 @@ The Multi30K images can be downloaded [here](https://forms.illinois.edu/sec/2296
 ```shell
 
 cd $IMG_ROOT/raw_images
+
 # Download the image data here
 
 ```
