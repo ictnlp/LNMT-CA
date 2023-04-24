@@ -29,7 +29,9 @@ SRC1=de
 SRC2=fr
 SRC3=cs
 
+$IMG_ROOT = data/img/
 cd $IMG_ROOT
+
 mkdir -p raw_images
 mkdir $SRC1 $SRC2 $SRC3
 ```
