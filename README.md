@@ -89,7 +89,7 @@ python extract_vit.py --lang $SRC3 --device cuda:0
 
 ### Data Preprocess
 
-2. Use `fairseq-preprocess` command to convert the BPE texts into fairseq formats.
+1. Use `fairseq-preprocess` command to convert the BPE texts into fairseq formats.
 
 ```shell
 TEXT=data/text/bpe/en-mul
